@@ -1,13 +1,22 @@
-import typescript from "rollup-plugin-typescript2";
+import typescript from 'rollup-plugin-typescript2'
 
 /**
  * @type {import("rollup").RollupOptions}
  */
 export default {
-  input: ["src/index.ts", "src/curried.ts"],
+  input: ['src/index.ts', 'src/curried.ts'],
   output: [
-    { format: "cjs", dir: "dist/cjs" },
-    { format: "esm", dir: "dist/esm" },
+    {
+      format: 'cjs',
+      sourcemap: true,
+      dir: 'dist/cjs',
+    },
+    {
+      format: 'es',
+      sourcemap: true,
+      dir: 'dist/es',
+      entryFileNames: '[name].mjs',
+    },
   ],
   plugins: [typescript()],
-};
+}
