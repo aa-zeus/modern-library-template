@@ -2,24 +2,29 @@
   "name": "modern-library-template",
   "version": "0.0.1",
   "description": "template for building a modern JavaScript library.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/es/index.mjs",
+  "type": "module",
   "scripts": {
     "prepare": "husky install",
     "build": "rimraf dist && rollup -c rollup.config.js && npm run build:dts",
-    "build:dts": "tsc --emitDeclarationOnly --declarationDir ./dist/types",
+    "build:dts": "tsc --declaration --emitDeclarationOnly --declarationDir ./dist/types",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "require": "./dist/cjs/index.js",
-      "default": "./dist/es/index.mjs"
+      "node": {
+        "module": "./dist/es/index.js",
+        "require": "./dist/cjs/index.cjs"
+      },
+      "default": "./dist/es/index.js"
     },
     "./curried": {
       "types": "./dist/types/curried.d.ts",
-      "require": "./dist/cjs/curried.js",
-      "default": "./dist/es/curried.mjs"
+      "node": {
+        "module": "./dist/es/curried.js",
+        "require": "./dist/cjs/curried.cjs"
+      },
+      "default": "./dist/es/curried.js"
     },
     "./package.json": "./package.json"
   },
@@ -27,12 +32,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.4",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.77.0",
-    "rollup-plugin-typescript2": "^0.32.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },

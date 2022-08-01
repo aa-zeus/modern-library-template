@@ -1,4 +1,4 @@
-import { len } from './utils'
+import { len } from './utils.js'
 
 export const add = (a: number, b: number) => a + b
 

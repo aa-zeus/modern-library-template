@@ -1,6 +1,6 @@
-import * as _ from '.'
+import * as _ from './index.js'
 
-export { sum, mean } from '.'
+export { sum, mean } from './index.js'
 
 export const add = (b: number) => (a: number) => _.add(a, b)
 

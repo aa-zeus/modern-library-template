@@ -1,4 +1,4 @@
-import typescript from 'rollup-plugin-typescript2'
+import typescript from '@rollup/plugin-typescript'
 
 /**
  * @type {import("rollup").RollupOptions}
@@ -10,12 +10,12 @@ export default {
       format: 'cjs',
       sourcemap: true,
       dir: 'dist/cjs',
+      entryFileNames: '[name].cjs',
     },
     {
       format: 'es',
       sourcemap: true,
       dir: 'dist/es',
-      entryFileNames: '[name].mjs',
     },
   ],
   plugins: [typescript()],
